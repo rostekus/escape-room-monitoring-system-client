@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext'
 
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
 import Header from './components/Header'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Header/>
           <PrivateRoute component={HomePage} path="/" exact/>
           <Route component={LoginPage} path="/login"/>
+          <Route component={RegisterPage} path="/register"/>
         </AuthProvider>
       </Router>
     </div>
