@@ -1,8 +1,37 @@
-import React, {useState, useEffect, useContext} from 'react'
-import AuthContext from '../context/AuthContext'
-
+import React from 'react'
+import getHints from '../components/Hints'
 const HomePage = () => {
 
+let getHints = (gameId) => {
+    const hints = [
+        {
+            "gameId": 1,
+            "text": "Open the door",
+            "num" :1,
+        },
+        {
+        
+            "gameId": 1,
+            "text": "Open the door",
+            "num" :1,
+    
+        },
+        {
+            "gameId": 2,
+            "text": "Open the door",
+            "num" :1,
+        },
+        {
+        
+            "gameId": 2,
+            "text": "Open the door",
+            "num" :1,
+    
+        },
+    ]
+    
+    return hints.filter(hint => hint.gameId === gameId);
+}
 
     let games = [
         {   "id": 0,
@@ -17,10 +46,9 @@ const HomePage = () => {
             "endTimestamp": 1649350800000
         },
     ]
-
+    console.log(getHints(1))
     return (
         <div>
-            <p>You are logged to the home page!</p>
 
 
             <ul>
@@ -28,6 +56,15 @@ const HomePage = () => {
                     <li key={game.id} >{game.name} {game.startTimestamp}</li>
                 ))}
             </ul>
+            <ul>
+                {getHints(1).map(hint => (
+                    <li key={hint.num} >{hint.text}</li>
+                ))}
+            </ul>
+        
+            
+           
+           
         </div>
     )
 }
