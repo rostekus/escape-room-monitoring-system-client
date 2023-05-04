@@ -1,7 +1,26 @@
 import React from 'react'
 const HomePage = () => {
 
-let getHints = (gameId) => {
+let getGamesForUserID = (userId) => {
+    let games = [
+        {   "id": 0,
+            "name": "Escape Room Game",
+            "startTimestamp": 1649347200000,
+            "endTimestamp": 1649350800000
+        },
+        {   
+            "id": 1,
+            "name": "Escape Room Game 1",
+            "startTimestamp": 1649347200000,
+            "endTimestamp": 1649350800000
+        },
+    ]
+    return games;
+}
+
+
+
+let getHintsForGameID = (gameId) => {
     const hints = [
         {
             "gameId": 1,
@@ -32,33 +51,21 @@ let getHints = (gameId) => {
     return hints.filter(hint => hint.gameId === gameId);
 }
 
-    let games = [
-        {   "id": 0,
-            "name": "Escape Room Game",
-            "startTimestamp": 1649347200000,
-            "endTimestamp": 1649350800000
-        },
-        {   
-            "id": 1,
-            "name": "Escape Room Game 1",
-            "startTimestamp": 1649347200000,
-            "endTimestamp": 1649350800000
-        },
-    ]
-    console.log(getHints(1))
+   
+   
     return (
         <div>
 
-
+            {/* get games for userID=="User"*/}
             <ul>
-                {games.map(game => (
+                {getGamesForUserID("User").map(game => (
                     <li key={game.id} >{game.name} {game.startTimestamp}</li>
                 ))}
             </ul>
 
             {/* get hints for gameID==1*/}
             <ul>
-                {getHints(1).map(hint => (
+                {getHintsForGameID(1).map(hint => (
                     <li key={hint.num} >{hint.text}</li>
                 ))}
             </ul>
