@@ -5,8 +5,17 @@ const HomePage = () => {
 
 
     let games = [
-        {id:1, name:'Game 1'},
-        {id:2, name:'Game 2'},
+        {   "id": 0,
+            "name": "Escape Room Game",
+            "startTimestamp": 1649347200000,
+            "endTimestamp": 1649350800000
+        },
+        {   
+            "id": 1,
+            "name": "Escape Room Game 1",
+            "startTimestamp": 1649347200000,
+            "endTimestamp": 1649350800000
+        },
     ]
 
     return (
@@ -16,7 +25,7 @@ const HomePage = () => {
 
             <ul>
                 {games.map(game => (
-                    <li key={game.id} >{game.name}</li>
+                    <li key={game.id} >{game.name} {game.startTimestamp}</li>
                 ))}
             </ul>
         </div>
