@@ -11,11 +11,9 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <AuthProvider>
           <Header/>
-          <PrivateRoute component={HomePage} path="/" exact/>
+          <Route component={HomePage} path="/"/>
           <Route component={LoginPage} path="/login"/>
-        </AuthProvider>
       </Router>
     </div>
   );

@@ -2,41 +2,23 @@ import React, {useState, useEffect, useContext} from 'react'
 import AuthContext from '../context/AuthContext'
 
 const HomePage = () => {
-    let [notes, setNotes] = useState([])
-    let {user ,authTokens, logoutUser} = useContext(AuthContext)
-    
-    useEffect(()=> {
-        getNotes()
-    }, [])
 
-    let getNotes = () =>{
-        console.log("ff")
-    }
-  
-    // let getNotes = async() =>{
-    //     let response = await fetch('http://127.0.0.1:8080/api/notes/', {
-    //         method:'GET',
-    //         headers:{
-    //             'Content-Type':'application/json',
-    //             'Authorization':'Bearer ' + String(authTokens.access)
-    //         }
-    //     })
-    //     let data = await response.json()
 
-    //     if(response.status === 200){
-    //         setNotes(data)
-    //     }else if(response.statusText === 'Unauthorized'){
-    //         logoutUser()
-    //     }
-        
-    // }
+    let games = [
+        {id:1, name:'Game 1'},
+        {id:2, name:'Game 2'},
+    ]
 
     return (
         <div>
-            <p>You are logged to the home page </p>
+            <p>You are logged to the home page!</p>
 
 
-        
+            <ul>
+                {games.map(game => (
+                    <li key={game.id} >{game.name}</li>
+                ))}
+            </ul>
         </div>
     )
 }

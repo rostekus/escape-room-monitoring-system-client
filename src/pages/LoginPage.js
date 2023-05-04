@@ -1,8 +1,14 @@
 import React, {useContext} from 'react'
-import AuthContext from '../context/AuthContext'
+import { useHistory } from 'react-router-dom'
+
+
 
 const LoginPage = () => {
-    let {loginUser} = useContext(AuthContext)
+  let loginUser = async (e )=> {
+    e.preventDefault()
+    
+   
+  }
     return (
       <div className="flex justify-center items-center h-screen">
         <form onSubmit={loginUser} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
