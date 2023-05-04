@@ -1,57 +1,9 @@
 import React from 'react'
+import { getGamesForUserID, getHintsForGameID, addHint } from '../api/Mock.js'
 const HomePage = () => {
 
-let getGamesForUserID = (userId) => {
-    let games = [
-        {   "id": 0,
-            "name": "Escape Room Game",
-            "startTimestamp": 1649347200000,
-            "endTimestamp": 1649350800000
-        },
-        {   
-            "id": 1,
-            "name": "Escape Room Game 1",
-            "startTimestamp": 1649347200000,
-            "endTimestamp": 1649350800000
-        },
-    ]
-    return games;
-}
-
-
-
-let getHintsForGameID = (gameId) => {
-    const hints = [
-        {
-            "gameId": 1,
-            "text": "Open the door",
-            "num" :1,
-        },
-        {
-        
-            "gameId": 1,
-            "text": "Open the door",
-            "num" :1,
-    
-        },
-        {
-            "gameId": 2,
-            "text": "Open the door",
-            "num" :1,
-        },
-        {
-        
-            "gameId": 2,
-            "text": "Open the door",
-            "num" :1,
-    
-        },
-    ]
-    
-    return hints.filter(hint => hint.gameId === gameId);
-}
-
-   
+    // add hint to game with ID 1,the number of hint is 1
+    //    addHint(1,"Open the door 3", 3);
    
     return (
         <div>
