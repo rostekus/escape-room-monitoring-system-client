@@ -1,5 +1,4 @@
 import React from 'react'
-import getHints from '../components/Hints'
 const HomePage = () => {
 
 let getHints = (gameId) => {
@@ -56,6 +55,8 @@ let getHints = (gameId) => {
                     <li key={game.id} >{game.name} {game.startTimestamp}</li>
                 ))}
             </ul>
+
+            {/* get hints for gameID==1*/}
             <ul>
                 {getHints(1).map(hint => (
                     <li key={hint.num} >{hint.text}</li>
