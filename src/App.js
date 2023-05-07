@@ -1,10 +1,8 @@
-import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import PrivateRoute from './utils/PrivateRoute'
-import { AuthProvider } from './context/AuthContext'
 
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
+import HintsPage from './pages/HintsPage'
 import Header from './components/Header'
 
 function App() {
@@ -12,8 +10,9 @@ function App() {
     <div className="App">
       <Router>
           <Header/>
-          <Route component={HomePage} path="/"/>
           <Route component={LoginPage} path="/login"/>
+          <Route path="/games/:gameId" component={HintsPage} />
+          <Route component={HomePage} exact path="/"/>
       </Router>
     </div>
   );
