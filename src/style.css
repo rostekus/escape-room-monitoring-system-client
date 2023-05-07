@@ -1,0 +1,33 @@
+.tile {
+    background-color: lightgreen;
+    height: 200px;
+    border-radius: 30px;
+    padding: 20px;
+    font-family: Helvetica;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 24px;
+    box-sizing: border-box;
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+.tile:hover {
+        background: darkgreen;
+    }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    }
+    
+.tiles {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
