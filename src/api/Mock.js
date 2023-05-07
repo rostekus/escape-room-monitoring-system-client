@@ -1,5 +1,17 @@
 const hints = [
     {
+        "gameId": 0,
+        "text": "Open the door 1",
+        "num" :1,
+    },
+    {
+    
+        "gameId": 0,
+        "text": "Open the door 2",
+        "num" :2,
+
+    },
+    {
         "gameId": 1,
         "text": "Open the door 1",
         "num" :1,
@@ -38,6 +50,24 @@ const games = [
     {   
         "id": 1,
         "name": "Escape Room Game 1",
+        "startTimestamp": 1649347200000,
+        "endTimestamp": 1649350800000
+    },
+    {   
+        "id": 2,
+        "name": "Escape Room Game 2",
+        "startTimestamp": 1649347200000,
+        "endTimestamp": 1649350800000
+    },
+    {   
+        "id": 3,
+        "name": "Escape Room Game 3",
+        "startTimestamp": 1649347200000,
+        "endTimestamp": 1649350800000
+    },
+    {   
+        "id": 4,
+        "name": "Escape Room Game 4",
         "startTimestamp": 1649347200000,
         "endTimestamp": 1649350800000
     },
