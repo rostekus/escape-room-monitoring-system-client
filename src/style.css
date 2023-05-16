@@ -94,3 +94,32 @@ body {
   text-decoration-line: none;
   font-family: "Helvetica";
 }
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Set the height of the container to the full viewport height */
+}
+
+.button {
+  background-color: #000;
+  opacity: 0.8;
+  border: 2px solid #fff;
+  height: 200px;
+  border-radius: 30px;
+  padding: 20px;
+  font-family: "Nosifer", cursive;
+  letter-spacing: 2px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  margin: 25px 25px;
+  width: 30%;
+  align-items: center;
+}
+.button:hover {
+  background: #4c0d0d;
+}
