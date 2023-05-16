@@ -73,6 +73,31 @@ const games = [
     },
 ]
 
+const gamesCurrent = [
+    {   "id": 0,
+        "name": "Escape Room Game",
+        "startTimestamp": 1649347200000,
+        "endTimestamp": 1649350800000,
+        "numOfPlayers": "2/4",
+        "Stage": "1/10",
+    },
+    {   
+        "id": 1,
+        "name": "Escape Room Game 1",
+        "startTimestamp": 1649347200000,
+        "endTimestamp": 1649350800000,
+        "numOfPlayers": "4/4",
+        "Stage": "8/10",
+    },
+    {   
+        "id": 2,
+        "name": "Escape Room Game 2",
+        "startTimestamp": 1649347200000,
+        "endTimestamp": 1649350800000,
+        "numOfPlayers": "3/4",
+        "Stage": "7/10",
+    },
+]
 
 
 let getHintsForGameID = (gameId) => {
@@ -92,4 +117,4 @@ let addHint = (gameId, text, num) => {
 
 
 
-export { getGamesForUserID, getHintsForGameID, addHint}
+export { gamesCurrent, getGamesForUserID, getHintsForGameID, addHint}
