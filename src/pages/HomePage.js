@@ -1,44 +1,37 @@
-import React, {useState, useEffect, useContext} from 'react'
-import AuthContext from '../context/AuthContext'
+import React from "react";
+import { useState } from "react";
+import { getGamesForUserID, getHintsForGameID, addHint } from "../api/Mock.js";
+import { useHistory } from "react-router-dom";
 
+
+import Tile from "../components/Tile.js";
 const HomePage = () => {
-    let [notes, setNotes] = useState([])
-    let {user ,authTokens, logoutUser} = useContext(AuthContext)
-    
-    useEffect(()=> {
-        getNotes()
-    }, [])
+  const [selectedGameID, setSelectedGameID] = useState(null);
+  const history = useHistory();
 
-    let getNotes = () =>{
-        console.log("ff")
-    }
-  
-    // let getNotes = async() =>{
-    //     let response = await fetch('http://127.0.0.1:8080/api/notes/', {
-    //         method:'GET',
-    //         headers:{
-    //             'Content-Type':'application/json',
-    //             'Authorization':'Bearer ' + String(authTokens.access)
-    //         }
-    //     })
-    //     let data = await response.json()
+  function pushToHintsPage(gameId) {
+    console.log(gameId)
+    history.push(`/games/${gameId}`);
+  }
 
-    //     if(response.status === 200){
-    //         setNotes(data)
-    //     }else if(response.statusText === 'Unauthorized'){
-    //         logoutUser()
-    //     }
-        
-    // }
-
-    return (
-        <div>
-            <p>You are logged to the home page </p>
-
-
-        
-        </div>
-    )
-}
-
-export default HomePage
+  return (
+    <div
+    className="container"
+      
+    >
+      <div
+      className="tiles"
+      >
+        {/* render clickable tiles for each game */}
+        {getGamesForUserID("User").map((game) => (
+          <Tile
+            key={game.id}
+            name={game.name}
+            onClick={() => pushToHintsPage(game.id)} 
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+export default HomePage;
