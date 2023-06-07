@@ -8,12 +8,6 @@ const Header = () => {
       <Link to="/" className="navbar-object">
         Home
       </Link>
-      <Link to="/current" className="navbar-object">
-        Current Games
-      </Link>
-      <Link to="/player/hints" className="navbar-object">
-        Players Page
-      </Link>
 
       {/* <span> | </span> */}
     </div>
