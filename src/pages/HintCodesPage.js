@@ -18,7 +18,7 @@ const HintCodesPage = () => {
         if(checkCode(val)){
             alert("Success");
         }
-        if(!checkCode(val)) {
+        else if(!checkCode(val)) {
             alert("No such code exists")
         }
     }

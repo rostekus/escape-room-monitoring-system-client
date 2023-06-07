@@ -8,12 +8,16 @@ const PlayerHints = () => {
     history.push('/player/hints/codes');
   }
 
+  function pushToHintRevealPage() {
+    history.push('/player/hints/reveal');
+  }
+
   const  gameId = 0;
   console.log(gameId);
   return (
     <div className="button-container">
     <button  className="button" onClick={() => pushToTaskCodePage()} >Register Task Code</button>
-    <button  className="button" >Request Hint</button>
+    <button  className="button" onClick={() => pushToHintRevealPage()} >Request Hint</button>
     </div>
   );
 };
