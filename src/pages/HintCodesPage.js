@@ -1,10 +1,13 @@
 import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
-
+import {mapCodes} from "../api/Mock";
 
 const HintCodesPage = () => {
     const history = useHistory();
     const [val, setVal] = useState("Type Code Here");
+    function clearInput(){
+        setVal("");
+    }
     function pushToPlayerPage() {
         history.push('/player/hints');
     }
@@ -15,11 +18,10 @@ const HintCodesPage = () => {
         if(checkCode(val)){
             alert("Success");
         }
-        else {
+        if(!checkCode(val)) {
             alert("No such code exists")
         }
     }
-    const gameId = 0;
     const code1 = 101;
     const code2 = 102;
     const code3 = 103;
@@ -28,23 +30,27 @@ const HintCodesPage = () => {
 
     function checkCode(code) {
         if(code == code1) {
-            map["1"] = true;
+            if(mapCodes["1"]) {
+                alert("Already used");
+                return false;
+            }
+            mapCodes["1"] = true;
             return true;
         }
         if(code == code2) {
-            map["2"] = true;
+            mapCodes["2"] = true;
             return true;
         }
         if(code == code3) {
-            map["3"] = true;
+            mapCodes["3"] = true;
             return true;
         }
         if(code == code4) {
-            map["4"] = true;
+            mapCodes["4"] = true;
             return true;
         }
         if(code == code5) {
-            map["5"] = true;
+            mapCodes["5"] = true;
             return true;
         }
         else {
@@ -52,19 +58,9 @@ const HintCodesPage = () => {
         }
     }
 
-    let map;
-    map =
-        {
-            "1" : false,
-            "2" : false,
-            "3" : false,
-            "4" : false,
-            "5" : false,
-        }
-
     return (
         <div className={"button-container"}>
-            <input textAlign={'center'} className={"input"} onChange={change} value={val}/>
+            <input className={"input"} onChange={change} value={val} onClick={clearInput}/>
             <button className={"button"} onClick={click}>Register Code</button>
             <button  className="button" onClick={() => pushToPlayerPage()} >Return</button>
         </div>
