@@ -26,7 +26,7 @@ const HintRevealPage = () => {
 
     async function playHint() {
         const url = getHint().then((res) => {
-                soundPlay(res.audioURL);
+                soundPlay(res.audioUrl);
             }
         );
     }
@@ -45,7 +45,7 @@ const HintRevealPage = () => {
         // })
         // let data = await response.json()
         let data = {
-            audioURL: "https://commondatastorage.googleapis.com/codeskulptor-assets/Evillaugh.ogg",
+            audioUrl: "https://commondatastorage.googleapis.com/codeskulptor-assets/Evillaugh.ogg",
             text: "Run for your life"
         }
         return data;
