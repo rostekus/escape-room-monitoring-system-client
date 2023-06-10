@@ -114,7 +114,16 @@ let addHint = (gameId, text, num) => {
     })
 }
 
+let mapCodes =
+    {
+        "1" : false,
+        "2" : false,
+        "3" : false,
+        "4" : false,
+        "5" : false,
+    }
 
 
 
-export { gamesCurrent, getGamesForUserID, getHintsForGameID, addHint}
+
+export { gamesCurrent, getGamesForUserID, getHintsForGameID, addHint, mapCodes}

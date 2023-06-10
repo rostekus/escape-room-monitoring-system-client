@@ -6,6 +6,8 @@ import HintsPage from './pages/HintsPage'
 import Header from './components/Header'
 import PlayerHints from './pages/PlayerHints'
 import CurrentGamesPage from './pages/CurrentGamesPage'
+import HintCodesPage from './pages/HintCodesPage'
+import HintRevealPage from "./pages/HintRevealPage";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/games/:gameId" component={HintsPage} />
           <Route component={HomePage} exact path="/"/>
           <Route exact path="/player/hints" component={PlayerHints} />
+          <Route exact path="/player/hints/codes" component={HintCodesPage} />
+          <Route exact path="/player/hints/reveal" component={HintRevealPage} />
       </Router>
     </div>
   );
