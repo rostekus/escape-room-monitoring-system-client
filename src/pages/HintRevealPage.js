@@ -45,7 +45,7 @@ const HintRevealPage = () => {
         // })
         // let data = await response.json()
         let data = {
-            audioUrl: "https://commondatastorage.googleapis.com/codeskulptor-assets/Evillaugh.ogg",
+            audioUrl: "https://storage.googleapis.com/test_audio_ml_pipeline/2d50d9a3-880b-4e11-8eea-a93996c8b59f.wav",
             text: "Run for your life"
         }
         return data;
