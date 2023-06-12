@@ -37,17 +37,17 @@ const HintRevealPage = () => {
     }
 
     async function getData(counter, hintCounter) {
-        // let response = await fetch('http://127.0.0.1:8080/api/v1/games/hints/$(counter)/$(hintCounter)', {
-        //     method: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
-        // let data = await response.json()
-        let data = {
-            audioUrl: "https://storage.googleapis.com/test_audio_ml_pipeline/2d50d9a3-880b-4e11-8eea-a93996c8b59f.wav",
-            text: "Run for your life"
-        }
+        let response = await fetch('https://escape-room-ai-backend-3en65w4ona-uc.a.run.app/api/v1/hint/$(counter)/$(hintCounter)', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        let data = await response.json()
+        // let data = {
+        //     audioUrl: "https://storage.googleapis.com/test_audio_ml_pipeline/2d50d9a3-880b-4e11-8eea-a93996c8b59f.wav",
+        //     text: "Run for your life"
+        // }
         return data;
     }
     async function hintText() {
