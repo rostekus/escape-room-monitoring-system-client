@@ -5,7 +5,8 @@ import {useHistory} from "react-router-dom";
 import {Howl} from "howler";
 import Popup from "../components/Popup";
 
-let hintCounter = 0;
+let hintCounter = 1;
+let counter = 1;
 
 const HintRevealPage = () => {
     const [buttonPopup, setButtonPopup] = useState(false);
@@ -25,7 +26,7 @@ const HintRevealPage = () => {
     }
 
     async function playHint() {
-        const url = getHint().then((res) => {
+        const url = getData(counter, hintCounter).then((res) => {
                 soundPlay(res.audioUrl);
             }
         );
@@ -37,7 +38,7 @@ const HintRevealPage = () => {
     }
 
     async function getData(counter, hintCounter) {
-        let response = await fetch('https://escape-room-ai-backend-3en65w4ona-uc.a.run.app/api/v1/hint/$(counter)/$(hintCounter)', {
+        let response = await fetch(`https://escape-room-ai-backend-3en65w4ona-uc.a.run.app/api/v1/hint/${counter}/${hintCounter}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -51,7 +52,8 @@ const HintRevealPage = () => {
         return data;
     }
     async function hintText() {
-        getHint().then((res) => {
+        getHint();
+        getData(counter, hintCounter).then((res) => {
             //console.log(res.text);
             setMessage(res.text);
         })
@@ -62,8 +64,8 @@ const HintRevealPage = () => {
             return res.audioURL;
         });
     };
-    async function getHint() {
-        let counter = 1;
+    function getHint() {
+        //let counter = 1;
         for (let i = 0; i < getHintsForGameID(0).length; i++) {
             if (mapCodes[counter.toString()]) {
                 counter++;
@@ -72,27 +74,30 @@ const HintRevealPage = () => {
                 break;
             }
         }
-        let data = await getData(counter, hintCounter);
-        if (hintCounter < 2) {
+        //let data = await getData(counter, hintCounter);
+        if (hintCounter < 3) {
             hintCounter++;
         } else {
-            hintCounter = 0;
+            hintCounter = 1;
         }
-        return data;
+        //return data;
     }
     return (
         <div className={"button-container"}>
+
             <button className="button" onClick={() => {
                 setButtonPopup(true);
                 hintText();
             }
             }
             >Show Hint</button>
-            <button  className="button" onClick={() => pushToPlayerPage()} >Return</button>
             <button  className="button" onClick={() => playHint()} >Play hint</button>
+            <button  className="button" onClick={() => pushToPlayerPage()} >Return</button>
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-                <h3>{message}</h3>
+                <h4>You requested hint {hintCounter} of 3.</h4>
+                <h5>{message}</h5>
             </Popup>
+
         </div>
     )
 }

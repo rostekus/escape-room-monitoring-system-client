@@ -30,6 +30,10 @@ const HintCodesPage = () => {
     const code3 = 103;
     const code4 = 104;
     const code5 = 105;
+    const code6 = 106;
+    const code7 = 107;
+    const code8 = 108;
+
 
     function checkCode(code) {
         if(code == code1) {
@@ -74,6 +78,33 @@ const HintCodesPage = () => {
             }
             else {
                 mapCodes["5"] = true;
+                return true;
+            }
+        }
+        if(code == code6) {
+            if(mapCodes["6"]) {
+                return false;
+            }
+            else {
+                mapCodes["6"] = true;
+                return true;
+            }
+        }
+        if(code == code7) {
+            if(mapCodes["7"]) {
+                return false;
+            }
+            else {
+                mapCodes["7"] = true;
+                return true;
+            }
+        }
+        if(code == code8) {
+            if(mapCodes["8"]) {
+                return false;
+            }
+            else {
+                mapCodes["8"] = true;
                 return true;
             }
         }

@@ -187,9 +187,9 @@ body {
   color:black;
   opacity: 0.9;
   border: 2px solid #ffffff;
-  font-size: 35px;
+  font-size: 28px;
   border-radius: 30px;
-  position: fixed;
+  position: absolute !important;
   top: 40%;
   left: 34%;
   width: 600px;
@@ -198,6 +198,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px;
+  text-align: center;
 }
 .close-btn {
   background-color: black;
