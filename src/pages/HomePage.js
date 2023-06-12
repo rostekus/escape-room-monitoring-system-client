@@ -1,10 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { getGamesForUserID, getHintsForGameID, addHint } from "../api/Mock.js";
 import { useHistory } from "react-router-dom";
 
-
-import Tile from "../components/Tile.js";
 const HomePage = () => {
   const [selectedGameID, setSelectedGameID] = useState(null);
   const history = useHistory();
