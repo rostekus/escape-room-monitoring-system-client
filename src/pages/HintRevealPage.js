@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import {getHintsForGameID} from "../api/Mock";
 import {mapCodes} from "../api/Mock";
 import {useHistory} from "react-router-dom";
@@ -11,33 +11,55 @@ let counter = 1;
 const HintRevealPage = () => {
     const [buttonPopup, setButtonPopup] = useState(false);
     const [message, setMessage] = useState("");
+    const [audioLink, setaudioLink] = useState("");
     const history = useHistory();
+    const [isPlaying, setIsPlaying] = useState(false);
+      const [loading, setLoading] = useState(false);
 
-    const audioClips = [
-        {sound: "https://commondatastorage.googleapis.com/codeskulptor-assets/Evillaugh.ogg"}
-    ]
+
+
+
 
     function soundPlay(src) {
-        const sound = new Howl({
-            src,
-            html5: true
-        })
-        sound.play();
+    if (isPlaying) {
+        return; // Exit the function if sound is already playing
     }
 
+  const sound = new Howl({
+    src,
+    html5: true,
+    onplay: () => {
+      setIsPlaying(true); // Update the state when the sound starts playing
+    },
+    onend: () => {
+      setIsPlaying(false); // Update the state when the sound finishes playing
+    }
+  });
+
+  sound.play();
+}
     async function playHint() {
-        const url = getData(counter, hintCounter).then((res) => {
-                soundPlay(res.audioUrl);
-            }
-        );
+      
+        soundPlay(audioLink);
+        
     }
 
+    useEffect(() => {
+        getData(counter, hintCounter).then((res) => {
+          // Perform any initial data processing or state updates here
+          // For example, you can set the initial message state based on the fetched data
+          setMessage(res.text);
+          setaudioLink(res.audioUrl);
+        });
+      }, []); // Empty dependency array to ensure the effect runs only once on mount
 
+      
     function pushToPlayerPage() {
         history.push('/player/hints');
     }
 
     async function getData(counter, hintCounter) {
+        console.log("API call made");
         let response = await fetch(`https://escape-room-ai-backend-3en65w4ona-uc.a.run.app/api/v1/hint/${counter}/${hintCounter}`, {
         method: 'GET',
             headers: {
@@ -45,59 +67,62 @@ const HintRevealPage = () => {
             }
         })
         let data = await response.json()
-        // let data = {
-        //     audioUrl: "https://storage.googleapis.com/test_audio_ml_pipeline/2d50d9a3-880b-4e11-8eea-a93996c8b59f.wav",
-        //     text: "Run for your life"
-        // }
         return data;
     }
     async function hintText() {
         getHint();
-        getData(counter, hintCounter).then((res) => {
-            //console.log(res.text);
-            setMessage(res.text);
-        })
+     
     }
 
-    const hintURL = () => {
-        getHint().then((res) => {
-            return res.audioURL;
-        });
-    };
-    function getHint() {
+
+
+    async function getHint() {
         //let counter = 1;
+        setLoading(true); // Set loading to true while waiting for data
+      
         for (let i = 0; i < getHintsForGameID(0).length; i++) {
-            if (mapCodes[counter.toString()]) {
-                counter++;
-            }
-            if (!mapCodes[counter.toString()]) {
-                break;
-            }
+          if (mapCodes[counter.toString()]) {
+            counter++;
+          }
+          if (!mapCodes[counter.toString()]) {
+            break;
+          }
         }
-        //let data = await getData(counter, hintCounter);
+      
         if (hintCounter < 3) {
-            hintCounter++;
+          hintCounter++;
         } else {
-            hintCounter = 1;
+          hintCounter = 1;
         }
-        //return data;
-    }
+      
+        getData(counter, hintCounter)
+          .then((res) => {
+            setMessage(res.text);
+            setaudioLink(res.audioUrl);
+          })
+          .finally(() => {
+            setLoading(false); // Set loading to false when data fetching is complete
+          });
+      }
+      
     return (
+             
         <div className={"button-container"}>
-
+            
             <button className="button" onClick={() => {
                 setButtonPopup(true);
-                hintText();
+                // hintText();
             }
             }
             >Show Hint</button>
             <button  className="button" onClick={() => playHint()} >Play hint</button>
-            <button  className="button" onClick={() => pushToPlayerPage()} >Return</button>
+            <button className="button" onClick={() => getHint() } >Next Hint  <br/> {hintCounter} of 3. 
+         </button>
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-                <h4>You requested hint {hintCounter} of 3.</h4>
                 <h5>{message}</h5>
             </Popup>
-
+            <button  className="button" onClick={() => pushToPlayerPage()} >Return</button>
+            
         </div>
     )
 }
