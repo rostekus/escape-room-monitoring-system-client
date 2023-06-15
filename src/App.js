@@ -7,7 +7,8 @@ import Header from './components/Header'
 import PlayerHints from './pages/PlayerHints'
 import CurrentGamesPage from './pages/CurrentGamesPage'
 import HintCodesPage from './pages/HintCodesPage'
-import HintRevealPage from "./pages/HintRevealPage";
+import HintRevealPage from './pages/HintRevealPage'
+import SettingsPage from './pages/SettingsPage'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/player/hints" component={PlayerHints} />
           <Route exact path="/player/hints/codes" component={HintCodesPage} />
           <Route exact path="/player/hints/reveal" component={HintRevealPage} />
+          <Route exact path="/player/settings" component={SettingsPage} />
       </Router>
     </div>
   );
