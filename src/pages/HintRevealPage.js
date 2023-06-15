@@ -50,6 +50,7 @@ const HintRevealPage = () => {
           // For example, you can set the initial message state based on the fetched data
           setMessage(res.text);
           setaudioLink(res.audioUrl);
+          setLoading(false); // Set loading to false when data fetching is complete
         });
       }, []); // Empty dependency array to ensure the effect runs only once on mount
 
