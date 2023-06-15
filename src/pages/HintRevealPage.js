@@ -21,7 +21,7 @@ const HintRevealPage = () => {
 
 
     function soundPlay(src) {
-    if (isPlaying && !loading) {
+    if (isPlaying || loading) {
         return; // Exit the function if sound is already playing
     }
 
