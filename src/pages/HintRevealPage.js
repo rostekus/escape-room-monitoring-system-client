@@ -5,7 +5,7 @@ import {useHistory} from "react-router-dom";
 import {Howl} from "howler";
 import Popup from "../components/Popup";
 
-let hintCounter = 1;
+let hintCounter = 0;
 let counter = 1;
 
 const HintRevealPage = () => {
