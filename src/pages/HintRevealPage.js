@@ -39,7 +39,6 @@ const HintRevealPage = () => {
 
     async function getData(counter, hintCounter) {
         let response = await fetch(`https://escape-room-ai-backend-3en65w4ona-uc.a.run.app/api/v1/hint/${counter}/${hintCounter}`, {
-        mode: "no-cors",  
         method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
