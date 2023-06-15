@@ -11,6 +11,10 @@ const HomePage = () => {
     history.push(`/games/${gameId}`);
   }
 
+  function pushToSettingsPage() {
+    history.push(`/player/settings`);
+  }
+
   function pushToPlayerPage() {
     history.push('/player/hints');
   }
@@ -20,6 +24,7 @@ const HomePage = () => {
     className="button-container"
     >
       <button  className="button" onClick={() => pushToPlayerPage()} >Start Game</button>
+      <button className={"button"} onClick={() => pushToSettingsPage()}>Settings</button>
     </div>
   );
 };

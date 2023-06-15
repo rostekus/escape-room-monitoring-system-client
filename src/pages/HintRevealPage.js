@@ -4,6 +4,7 @@ import {mapCodes} from "../api/Mock";
 import {useHistory} from "react-router-dom";
 import {Howl} from "howler";
 import Popup from "../components/Popup";
+import {voice, comms, difficulty} from "./SettingsPage"
 
 let hintCounter = 0;
 let counter = 1;
@@ -80,6 +81,7 @@ const HintRevealPage = () => {
         } else {
             hintCounter = 1;
         }
+        console.log(voice, comms, difficulty);
         //return data;
     }
     return (
