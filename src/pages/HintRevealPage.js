@@ -4,6 +4,7 @@ import {mapCodes} from "../api/Mock";
 import {useHistory} from "react-router-dom";
 import {Howl} from "howler";
 import Popup from "../components/Popup";
+import {comms, difficulty, voice} from "./SettingsPage"
 
 let hintCounter = 1;
 let counter = 1;
@@ -60,16 +61,21 @@ const HintRevealPage = () => {
     }
 
     async function getData(counter, hintCounter) {
-        console.log("API call made");
-        let response = await fetch(`https://escape-room-ai-backend-3en65w4ona-uc.a.run.app/api/v1/hint/${counter}/${hintCounter}`, {
-        method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        let data = await response.json()
-        return data;
-    }
+      console.log("API call made");
+      let url = `https://escape-room-ai-backend-3en65w4ona-uc.a.run.app/api/v1/hint/${counter}/${hintCounter}`;
+      
+      // Add query parameters
+      url += `?comms=${comms}&difficulty=${difficulty}&voice=${voice}`;
+      console.log(url); 
+      let response = await fetch(url, {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+      let data = await response.json();
+      return data;
+  }
     async function hintText() {
         getHint();
      
